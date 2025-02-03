@@ -1,0 +1,42 @@
+# Node modules and dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build and output folders
+dist/
+build/
+out/
+coverage/
+
+# Logs and temporary files
+logs/
+*.log
+*.tmp
+*.cache
+
+# Environment and configuration files
+.env
+.env.local
+.env.*.local
+config.js
+config.json
+
+# Public/static assets
+public/
+static/
+
+# Minified and compiled files
+*.min.js
+*.min.css
+*.map
+*.compiled.js
+*.bundle.js
+
+# Documentation and system files
+README.md
+LICENSE
+.DS_Store
+.vscode/
+.idea/
