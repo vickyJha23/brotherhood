@@ -40,3 +40,12 @@ LICENSE
 .DS_Store
 .vscode/
 .idea/
+
+*.mjs
+**/*/.mjs
+*.json
+**/*/*.json
+eslint.config.mjs
+tsconfig.json
+.prettierrc
+*.md
