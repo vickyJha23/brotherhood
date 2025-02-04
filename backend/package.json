@@ -11,8 +11,7 @@
     "formate:fix": "npx prettier . --write",
     "prepare": "husky"
   },
-
- "lint-staged": {
+  "lint-staged": {
     "*.ts": [
       "npm run lint:fix",
       "npm run formate:fix"
