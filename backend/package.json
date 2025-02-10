@@ -9,7 +9,8 @@
     "lint:check": "npx eslint .",
     "formate:check": "npx prettier . --check",
     "formate:fix": "npx prettier . --write",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start": "cross-env NODE_ENV=development nodemon ./src/server.ts"
   },
   "lint-staged": {
     "*.ts": [
@@ -22,7 +23,11 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^22.13.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "husky": "^9.1.7",
@@ -34,9 +39,13 @@
   },
   "dependencies": {
     "@types/express": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
     "dotenv-flow": "^4.1.0",
     "express": "^4.21.2",
-    "mongoose": "^8.9.6"
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.6",
+    "ts-node": "^10.9.2"
   }
 }
