@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cookieParser from 'cookie-parser';
 import { userRouter } from './routes';
 import { ApiError } from './utils';
+import cors from "cors";
 
 const app = express();
 
@@ -10,6 +11,9 @@ app.use(express.json({ limit: '1MB' })); // data is coming json formate
 app.use(express.urlencoded({ extended: true, limit: '1MB' })); // to read the url encoded data and makes it available in request that boday
 app.use(cookieParser()); // header se cookie ko read karke req.cookies me available karn waala according to their name
 app.use(express.static('public'));
+app.use(cors({
+      origin: "http://localhost:5173"
+}))
 
 // rotues setup
 

@@ -7,9 +7,8 @@ class AuthService {
     this.userModel = userModel;
   }
   async findUserByEmail(email: string) {
-    console.log(email);
     const user = await this.userModel.findOne({ email });
-    console.log(user); // this method returns firstly matched document
+    // this method returns firstly matched document
     return user;
   }
   async saveUserToDB(userName: string, email: string, password: string) {

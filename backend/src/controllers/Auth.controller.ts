@@ -60,11 +60,11 @@ class AuthController {
       };
       const user = await this.authService.findUserByEmail(email);
       if (!user) {
-        throw new ApiError('Invalid email', 400, false); // preferred when data sent is incorrect
+        throw new ApiError('Invalid email or password', 400, false); // preferred when data sent is incorrect
       }
       const isPasswordCorrect = this.comparePassword(password, user.password);
       if (!isPasswordCorrect) {
-        throw new ApiError('Invalid password', 400, false);
+        throw new ApiError('Invalid email or password', 400, false);
       }
       const modifiedUser = { ...user, password: null } as IUserDto;
       const userData = this.userDto.userDto(modifiedUser);

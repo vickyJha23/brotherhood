@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from "sonner";
-import { ClipLoader } from "react-spinners"
-import { Regex } from 'lucide-react';
+import { ClipLoader } from "react-spinners";
 
 
 
@@ -34,20 +33,19 @@ const Register = () => {
                }
                if(isValid){
                     try {
-                        const response = await fetch("", {
+                        const response = await fetch("http://localhost:8000/api/v1/user/register", {
                               method: "POST",
                               headers: {
                                    "Content-Type": "application/json"
                               },
                               body: JSON.stringify(formData)
-
                         });
                         const data = await response.json();
                         if(data.success){
                               toast.success(data.message);
                         }  
                         else {
-                            toast.error(data.message);
+                            toast.error(data.error.message);
                         }
                     } catch (error) {
                          toast.error(error.message);
@@ -57,14 +55,12 @@ const Register = () => {
          else {
               toast.error("All field required !");
          }
-         setTimeout(() => {
-            setLoading(false);
-         }, 1000)
+        setLoading(false);
    }
 
   return (
-     <section className='h-screen w-full grid place-items-center bg-[#f1f5f9]'>
-         <div className='w-full max-w-md h-[500px] white shadow overflow-hidden'>
+     <section className='h-screen w-full'>
+         <div className='w-full max-w-md mx-auto h-[500px] mt-10 overflow-hidden'>
              <div className='w-full h-auto p-6'>
                  <h1 className='text-center text-2xl font-bold uppercase tracking-wider'>Create an account</h1>
                  <div className='h-full mt-10 flex flex-col gap-2'>
@@ -81,8 +77,8 @@ const Register = () => {
                           <input onChange={handleChange} type="password" name="password" id="password" className='px-3 py-2 border-2 rounded-xl' required placeholder='Enter password' value={formData.password} />
                      </div>
                  </div>
-                 <button onClick={handleSubmit} type='button' className='w-full text-white bg-black rounded-xl py-2 mt-6 cursor-pointer tracking-widest relative disabled:bg-[#333]' disabled={isLoading ? true:false} >
-                     <span>Register</span>
+                 <button onClick={handleSubmit} type='button' className='w-full py-2 text-white bg-black rounded-xl mt-6 cursor-pointer relative disabled:bg-[#333]' disabled={isLoading ? true:false} >
+                     <span className='tracking-widest font-semibold text-lg'>Register</span>
                      {isLoading && <ClipLoader color='white' className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' />}
                 </button>
                 <p className='text-center mt-4'>
