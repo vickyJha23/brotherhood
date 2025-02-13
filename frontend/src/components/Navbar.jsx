@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Menu, User, ShoppingBag, Search, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import Logo from './Logo';
+import useSidebarStore from '../store/Sidebarstore';
+
 
 const Navbar = () => {
+   const showSidebar  = useSidebarStore((state) => state.showSidebar);
+   console.log(showSidebar)
     const [isLoggedIn, setLoggedIn] = useState(false);
     useEffect(() => {
        const token =  JSON.parse(localStorage.getItem("data"))?.accessToken;
@@ -17,7 +21,7 @@ const Navbar = () => {
   return (
        <nav className='w-full h-full flex items-center'>
            <div className='w-full flex h-full justify-between items-center'>
-                <button type='button' className=''>
+                <button onClick={showSidebar} type='button' className='cursor-pointer'>
                       <Menu className='w-10 h-10'/>
                 </button>
                 <Logo />
