@@ -7,7 +7,7 @@ const Dashboard = () => {
     const [isSidebarActive, setSidebarActive] = useState(false);
 
   return (
-    <section className='h-screen'>
+    <section className='h-screen pb-[2000px]'>
         <Sidebar isActive={isSidebarActive} setActive={setSidebarActive} />        
         <Header setActive={setSidebarActive} />
         <div>

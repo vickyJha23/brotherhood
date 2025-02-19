@@ -1,10 +1,11 @@
 class ApiError extends Error {
-  status: number;
-  success: boolean;
+  public status: number;
+  public success: boolean;
   constructor(message: string, status: number, success: boolean) {
     super(message);
     this.status = status;
     this.success = success;
+    Object.setPrototypeOf(this, new.target.prototype)
   }
 }
 

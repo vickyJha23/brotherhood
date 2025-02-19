@@ -4,9 +4,9 @@ import imageCollection from '../assets/Images/image'
 
 const Logo = () => {
   return (
-    <div className='w-16 h-16 flex items-center'>
+    <div className='flex items-center'>
          {/* <img src={imageCollection.logo} alt="logo" className='w-full h-full object-cover' />    */}
-         <h1 className='text-3xl font-bold tracking-[2px]'>SNITCH</h1>
+         <h1 className='text-2xl font-bold tracking-[2px]'>SNITCH</h1>
     </div>
   )
 }

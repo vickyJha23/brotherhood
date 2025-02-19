@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { toast } from 'sonner';
 
 import staticData from '../assets/static/static';
+import useUserStore from '../store/user.store';
 
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
          email: "",
          password: "",
     })   
+    const setloginStatus = useUserStore((state) => state.setloginStatus);
     const [isLoading, setLoading] = useState(false);
     const handleChange = (e) => {
        const { name, value } = e.target;
@@ -42,7 +44,7 @@ const Login = () => {
                      const data = await response.json();
                      if(data.success){
                           toast.success(data.message);
-                          localStorage.setItem("data", JSON.stringify(data.data));
+                          setloginStatus(true);
                      }
                      else {
                          toast.error(data.error.message);

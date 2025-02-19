@@ -3,13 +3,13 @@ import { IUserDto } from '../types/type';
 class ApiResponse {
   message: string;
   status: number;
-  data: IUserDto;
+  data: IUserDto | {};
   success: boolean;
   constructor(
     message: string,
     status: number,
     success: boolean,
-    data: IUserDto
+    data: IUserDto | {}
   ) {
     this.message = message;
     this.status = status;
