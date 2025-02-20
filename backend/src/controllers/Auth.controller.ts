@@ -1,24 +1,31 @@
 import { Request, Response, NextFunction } from 'express';
-import { AuthService, TokenService } from '../services';
+import { AuthService, TokenService, OtpService, MailService } from '../services';
 import bcrypt from 'bcryptjs';
 import Config from '../configs/config';
 import { ApiResponse, ApiError } from '../utils';
 import UserDto from '../Dtos/User.dto';
 import { AuthenticatedRequest, IUser, IUserDto } from '../types/type';
 import { JwtPayload } from 'jsonwebtoken';
+import { SentMessageInfo } from 'nodemailer';
 
 class AuthController {
   private authService: AuthService;
   private tokenService: TokenService;
   private userDto: UserDto;
+  private otpService: OtpService;
+  private mailService: MailService;
   constructor(
     authService: AuthService,
     tokenService: TokenService,
-    userDto: UserDto
+    userDto: UserDto,
+    otpService: OtpService,
+    mailService: MailService
   ) {
     this.authService = authService;
     this.tokenService = tokenService;
     this.userDto = userDto;
+    this.otpService = otpService
+    this.mailService = mailService
   }
   // this function handle register
   async register(req: Request, res: Response, next: NextFunction) {
@@ -163,6 +170,29 @@ class AuthController {
           }
        } 
  }
+
+async sendOtp(req:Request, res:Response, next:NextFunction) {
+    try {
+        const { email } = req.body;
+        const user = await this.authService.findUserByEmail(email);
+        if(!user){
+            throw new ApiError("User not found", 404, false);
+        }
+        const otp = this.otpService.generateOtp();
+        const info:SentMessageInfo = await this.mailService.sendMail(otp, user.email);
+        if(info.messageId){
+          
+           res.status(200).json(new ApiResponse("Otp has been sent successFully", 200, true, {}))
+        }
+        
+    } catch (error) {
+        if(error instanceof Error){
+          console.error("Error at sendOtp handler", error);
+          next(error);
+        }
+    }
+}
+
 
  async chanagePassword (req:Request, res:Response, next:NextFunction) {
        try {

@@ -23,3 +23,16 @@ export interface IUserDto {
 export interface AuthenticatedRequest extends Request {
      user?: string | JwtPayload
 }
+
+export interface IMailOptions {
+  from: string;
+  to: string;
+  subject: string;
+  text: string;
+}
+
+export interface IOtp extends Document{
+     userId: Types.ObjectId,
+     otp: string,
+     createdAt: Date
+}
