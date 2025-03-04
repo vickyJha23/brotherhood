@@ -34,5 +34,14 @@ export interface IMailOptions {
 export interface IOtp extends Document{
      userId: Types.ObjectId,
      otp: string,
+     attempts: number,
+     isVerified: boolean
      createdAt: Date
+}
+
+export interface IUserReturnType{
+  _id: Types.ObjectId,
+  userName: string,
+  email: string
+  password: string
 }

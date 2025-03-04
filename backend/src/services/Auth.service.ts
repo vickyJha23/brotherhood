@@ -1,6 +1,8 @@
 import { Model, Types } from 'mongoose';
 import { IUser} from '../types/type';
 
+
+
 class AuthService {
   private userModel: Model<IUser>;
   constructor(userModel: Model<IUser>) {

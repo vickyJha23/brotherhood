@@ -7,6 +7,7 @@ import UserDto from '../Dtos/User.dto';
 import { AuthenticatedRequest, IUser, IUserDto } from '../types/type';
 import { JwtPayload } from 'jsonwebtoken';
 import { SentMessageInfo } from 'nodemailer';
+import { Types } from 'mongoose';
 
 class AuthController {
   private authService: AuthService;
@@ -180,10 +181,14 @@ async sendOtp(req:Request, res:Response, next:NextFunction) {
         }
         const otp = this.otpService.generateOtp();
         const info:SentMessageInfo = await this.mailService.sendMail(otp, user.email);
-        if(info.messageId){
-          
-           res.status(200).json(new ApiResponse("Otp has been sent successFully", 200, true, {}))
+        if(!info.messageId){
+            throw new ApiError("Failed to send OTP", 500, false);
         }
+        const savedOtp = await this.otpService.storeOtp(user?._id as Types.ObjectId, otp);
+        if(!savedOtp){
+              throw new ApiError("Failed to store OTP", 500, false);
+        }
+        res.status(200).json(new ApiResponse("Otp sent successFully", 200, true, {email}))
         
     } catch (error) {
         if(error instanceof Error){
@@ -193,8 +198,50 @@ async sendOtp(req:Request, res:Response, next:NextFunction) {
     }
 }
 
+async verifyOtp(req:Request, res:Response, next:NextFunction) {
+   try {
+      const { email, otp } = req.body;
+      const user = await this.authService.findUserByEmail(email);
+      if(!user){
+          throw new ApiError("User not found", 404, false)
+      }
+      const storeOtp = await this.otpService.getOtp(user._id as Types.ObjectId);
+      if(!storeOtp){
+           throw new ApiError("Otp not found", 404, false);
+      }
 
- async chanagePassword (req:Request, res:Response, next:NextFunction) {
+      const isOtpExpired = this.otpService.checkOtpExpiry(storeOtp);
+
+      if(storeOtp.isVerified) {
+          throw new ApiError("Otp has already been used", 409, false) 
+      }
+
+      if(isOtpExpired){
+          throw new ApiError("Otp has expired", 410, false);
+      }
+
+      if(storeOtp.attempts >= 3) {
+          throw new ApiError("Too many attempts", 429, false);
+      }
+      if(storeOtp.otp !== otp){
+           await this.otpService.updateOtpAttempts(storeOtp._id as Types.ObjectId);   
+           throw new ApiError("Invalid otp", 400, false);
+      }
+
+      await this.otpService.markOtpAsUsed(storeOtp._id as Types.ObjectId)
+      res.status(200).json(new ApiResponse("Otp verified successFully", 200, true, {}))
+    
+   } catch (error) {
+     if(error instanceof Error){
+         console.error("Error at verifyOtp handler", error)
+         next(error);
+     }
+
+   }
+
+}
+
+ async changePassword (req:Request, res:Response, next:NextFunction) {
        try {
            const { email, password }  = req.body;
            const user = await this.authService.findUserByEmail(email);
@@ -238,10 +285,6 @@ async sendOtp(req:Request, res:Response, next:NextFunction) {
             }
        }
   }
-
-
-
-
   hashPassword(password: string): string {
     const salt = bcrypt.genSaltSync(parseInt(Config.SALT_ROUND!));
     const hashedPassword = bcrypt.hashSync(password, salt);

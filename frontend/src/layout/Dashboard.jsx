@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {Outlet} from "react-router-dom"
 
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
 const Dashboard = () => {
-    const [isSidebarActive, setSidebarActive] = useState(false);
+    
+     
 
   return (
-    <section className='h-screen pb-[2000px]'>
-        <Sidebar isActive={isSidebarActive} setActive={setSidebarActive} />        
-        <Header setActive={setSidebarActive} />
+    <section className='h-screen'>
+        <Sidebar/>        
+        <Header />
         <div>
             <Outlet /> 
         </div>

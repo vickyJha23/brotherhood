@@ -11,6 +11,14 @@ const otpSchema = new Schema<IOtp>({
            type: String,
            required: true
       },
+      attempts: {
+          type: Number,
+          default: 0
+      },
+      isVerified: {
+          type: Boolean,
+          default: false
+      },
       createdAt:{
            type: Date,
            default: Date.now,
