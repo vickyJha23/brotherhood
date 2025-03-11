@@ -70,6 +70,7 @@ class AuthController {
         password: string;
       };
       const user = await this.authService.findUserByEmail(email);
+      // console.log("user", user);
       if (!user) {
         throw new ApiError('Invalid email or password', 400, false); // preferred when data sent is incorrect
       }
@@ -77,8 +78,11 @@ class AuthController {
       if (!isPasswordCorrect) {
         throw new ApiError('Invalid email or password', 400, false);
       }
-      const modifiedUser = { ...user, password: null } as IUserDto;
-      const userData = this.userDto.userDto(modifiedUser);
+      const modifiedUser = user.toObject();
+      delete modifiedUser.password;
+      
+      console.log("modifiedUser", modifiedUser);
+      const userData = this.userDto.userDto(modifiedUser as IUserDto);
       const payload: JwtPayload = {
         userId: user._id,
         email: user.email,

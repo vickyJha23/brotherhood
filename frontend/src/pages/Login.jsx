@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { ClipLoader } from "react-spinners"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'sonner';
 
 import staticData from '../assets/static/static';
 import useUserStore from '../store/user.store';
+import imageCollection from '../assets/Images/image';
 
 
 const Login = () => {
@@ -12,15 +13,17 @@ const Login = () => {
           email: "",
           password: "",
      })
-     const setloginStatus = useUserStore((state) => state.setloginStatus);
      const [isLoading, setLoading] = useState(false);
+     const navigate = useNavigate();
+     const setloginStatus = useUserStore((state) => state.setloginStatus);
      const handleChange = (e) => {
           const { name, value } = e.target;
           setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
      }
 
-     const handleSubmit = async () => {
-          setLoading(true);
+     const handleSubmit = async (e) => {
+          e.preventDefault();    
+          setLoading(true); 
           let isValid = true;
           if (formData.email && formData.password) {
                if (!staticData.emailRegex.test(formData.email.trim())) {
@@ -41,9 +44,13 @@ const Login = () => {
                               body: JSON.stringify(formData)
                          })
                          const data = await response.json();
+                         console.log(data);
                          if (data.success) {
                               toast.success(data.message);
-                              setloginStatus(true);
+                              setloginStatus(data.data);
+                              setTimeout(() => {
+                                   navigate("/");     
+                              }, 2000)
                          }
                          else {
                               toast.error(data.error.message);
@@ -60,12 +67,11 @@ const Login = () => {
           setLoading(false);
      }
 
-
      return (
           <section className='h-screen w-full relative'>
                <div className='h-full w-full flex justify-center items-center'>
-                    <div className='hidden md:block h-full w-full'>
-                          <p className='absolute left-5 top-5'>One Thread</p>
+                    <div className='hidden md:block h-full w-full p-5'>
+                          <img src={imageCollection.logo} alt="" className='h-[40px]' />
                          <img src="https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/o/13/d6708f64-ca70-452e-82ca-0435c793e8d2.png" alt="" className='w-full h-full object-cover' />
                     </div>
                     <div className='w-full p-6 bg-gray-200 h-full overflow-hidden flex items-center justify-center'>
@@ -88,6 +94,7 @@ const Login = () => {
                                              </label>
                                              <input onChange={handleChange} type="password" id="password" name='password' className='border-2 px-3 py-2 rounded-2xl' placeholder='Enter password' required value={formData.password} />
                                         </div>
+                                        <Link to="/auth/forgot-password" className='text-right text-sm -mt-2 font-semibold text-[#1E8DEF]'>Forgot password?</Link>
                                         <button type='button' onClick={handleSubmit} className='relative cursor-pointer bg-black text-white py-2 rounded-2xl disabled:bg-[#333]' disabled={isLoading ? true : false}>
                                              <span className='text-lg'>Login</span>
                                              {isLoading && <ClipLoader color='white' className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' />}
@@ -95,7 +102,7 @@ const Login = () => {
                                    </div>
                               </div>
                               <p className='mt-5 text-center'>
-                                   Don't have an account? <Link to="/register" className='text-blue-500'>
+                                   Don't have an account? <Link to="/auth/register" className='text-blue-500'>
                                         Signup
                                    </Link>
                               </p>

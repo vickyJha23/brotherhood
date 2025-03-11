@@ -1,7 +1,8 @@
-import BrotherHoodLogo from "./BrotherHood.jpeg";
+import OneThreadLogo from "./oneThread.png";
+
 
 const imageCollection = {
-    logo: BrotherHoodLogo,
+    logo: OneThreadLogo,
 }
 
 
