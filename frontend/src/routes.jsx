@@ -11,12 +11,22 @@ import ErrorPage from "./pages/ErrorPage";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOtp from "./pages/VerifyOtp";
 import ResetPassword from "./pages/ResetPassword";
+import AdminLayout from "./layout/AdminLayout";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
 
 const router = createBrowserRouter([
      {
         path: '/',
         element: <Dashboard />,
-        errorElement: <ErrorPage /> 
+        errorElement: <ErrorPage />,
+        children: [{
+            path: '/',
+            element: <Home />
+        }, {
+             path: "/products",
+             element: <Products /> 
+        }] 
      },
      {
         path: "/auth",
@@ -43,6 +53,10 @@ const router = createBrowserRouter([
                 element: <ResetPassword />
             }
         ]
+     },
+     {
+        path: "/admin",
+        element: <AdminLayout />
      }
 ]);
 

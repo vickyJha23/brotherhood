@@ -6,6 +6,7 @@ export interface IUser extends Document {
   userName: string;
   email: string;
   password: string;
+  role:string
 }
 
 export interface ITokens {
@@ -21,7 +22,7 @@ export interface IUserDto {
 }
 
 export interface AuthenticatedRequest extends Request {
-     user?: string | JwtPayload
+     user?:JwtPayload
 }
 
 export interface IMailOptions {
@@ -44,4 +45,17 @@ export interface IUserReturnType{
   userName: string,
   email: string
   password: string
+}
+
+export interface IAdminSchema extends Document{
+      userName: string,
+      email: string,
+      password: string,
+      role: string,
+      profileUrl: string,
+      publicId: string
+}
+
+export interface IAdminOtpSchema extends IOtp {
+     adminId: Types.ObjectId,
 }

@@ -8,6 +8,7 @@ class TokenService {
     const secretKey = fs.readFileSync(
       path.join(__dirname, '../../certs/privateKey.pem'),
       'utf-8'
+      
     );
     const accessToken = jwt.sign(payload, secretKey, {
       algorithm: 'RS256',

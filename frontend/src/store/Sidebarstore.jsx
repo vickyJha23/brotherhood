@@ -2,14 +2,16 @@ import { create } from "zustand";
 
 const useSidebarStore = create((set) => ({
       sidebarVisible: false,
+      sideBarDropdown: '',
       showSidebar: () => {
-        console.log("Sidebar opened");
         set({ sidebarVisible: true });
       },
       hideSidebar: () => {
-        console.log("Sidebar closed");
         set({ sidebarVisible: false });
       },
+      setSideBarDropdown: (value) => (set((state) => ({
+        sideBarDropdown: value
+      })))
 }));
 
 export default useSidebarStore;

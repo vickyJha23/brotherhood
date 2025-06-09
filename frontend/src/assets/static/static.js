@@ -7,4 +7,7 @@ const staticData = {
    otpRegex
 }
 
+
+
+
 export default staticData;

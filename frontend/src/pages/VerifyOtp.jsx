@@ -82,8 +82,8 @@ const VerifyOtp = () => {
   return (
       <section className='h-screen w-full'>
            <div className='w-full h-full flex'>
-               <div className='flex-40 bg-gray-300 flex justify-center items-center'>
-                   <div className='w-[320px] max-w-80 bg-white shadow rounded-2xl px-4 py-8 flex flex-col gap-2'>
+               <div className='flex-1/2 flex h-full bg-white justify-center items-center'>
+                   <div className='w-full lg:max-w-lg px-4 py-8 flex flex-col gap-2'>
                         <span className='border border-gray-300 w-[50px] rounded-lg h-[50px] mx-auto flex items-center justify-center shadow mb-4'>
                             <MailCheck size={30} />
                         </span>    
@@ -121,8 +121,8 @@ const VerifyOtp = () => {
                    </div>       
                </div>
                <div className='hidden md:block
-                flex-70 bg-white p-4'>
-                   <img src="https://images.bewakoof.com/t1080/men-s-black-graphic-printed-oversized-hoodies-644560-1735908012-1.jpg" alt="" className='object-cover w-full h-full rounded-xl' />
+                flex-1/2 bg-white p-4'>
+                   <img src="https://images.bewakoof.com/t1080/men-s-black-graphic-printed-oversized-hoodies-644560-1735908012-1.jpg" alt="" className='object-cover w-full h-full' />
                </div> 
            </div>
       </section>

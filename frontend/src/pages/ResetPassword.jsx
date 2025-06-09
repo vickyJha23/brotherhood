@@ -59,8 +59,8 @@ const ResetPassword = () => {
   return (
     <section className='h-screen w-full'>
         <div className='h-full flex items-center justify-center'>
-            <div className='flex-40 h-full bg-gray-300 flex justify-center items-center'>
-                 <div className='bg-white w-[320px] max-w-80 shadow rounded-xl p-5 flex flex-col gap-4'>
+            <div className='flex-1/2 h-full bg-white flex justify-center items-center'>
+                 <div className='w-full lg:max-w-lg p-5 flex flex-col gap-4'>
                       <p className='flex justify-center items-center bg-white border border-[#ccc] w-[50px] h-[50px] mx-auto rounded shadow-md'>
                          <RectangleEllipsis size={35} />    
                       </p>
@@ -87,8 +87,8 @@ const ResetPassword = () => {
                        </div>      
                  </div>
             </div>
-            <div className='hidden md:flex flex-60 h-full bg-yellow-300'>
-
+            <div className='hidden md:flex flex-1/2 h-full p-5'>
+                 <img src="https://thalasiknitfab.com/cdn/shop/files/AKIRAANIMETSHIRTFORMEN_2_490x.progressive.webp.jpg?v=1713165867" alt="" className='w-full h-full object-cover' />
             </div>
         </div>
     </section>

@@ -1,10 +1,11 @@
-import { IUserDto } from '../types/type';
+import { IUserDto, IUser, IAdminSchema } from '../types/type';
+import { Types } from 'mongoose';
 
 class UserDto {
-  userDto(user: IUserDto): IUserDto {
+  userDto(user: IUser | IAdminSchema): IUserDto | IAdminSchema {
     // console.log(user);
     const userData: IUserDto = {
-      _id: user._id,
+      _id: user._id as Types.ObjectId,
       userName: user.userName,
       email: user.email,
       password: null,

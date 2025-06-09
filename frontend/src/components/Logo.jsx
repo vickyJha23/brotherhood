@@ -4,8 +4,8 @@ import imageCollection from '../assets/Images/image'
 
 const Logo = () => {
   return (
-    <div className='flex items-center'>
-         <img src={imageCollection.logo} alt="logo" className='h-[40px]' />   
+    <div className='flex items-end'>
+         <img src={imageCollection.logo} alt="logo" className='h-[35px] align-middle' />   
     </div>
   )
 }

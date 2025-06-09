@@ -68,34 +68,33 @@ const Login = () => {
      }
 
      return (
-          <section className='h-screen w-full relative'>
-               <div className='h-full w-full flex justify-center items-center'>
-                    <div className='hidden md:block h-full w-full p-5'>
-                          <img src={imageCollection.logo} alt="" className='h-[40px]' />
-                         <img src="https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/o/13/d6708f64-ca70-452e-82ca-0435c793e8d2.png" alt="" className='w-full h-full object-cover' />
+          <section className='h-screen w-full relative flex items-center justify-center bg-[#f1f5f9]'>
+               <div className='w-full h-full lg:w-7/9 flex justify-center items-center lg:h-8/9 bg-white rounded-lg'>
+                    <div className='hidden md:flex md:justify-center md:items-center h-full w-full p-5'>
+                         <img src="https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/o/13/d6708f64-ca70-452e-82ca-0435c793e8d2.png" alt="" className='w-full aspect-[1/1] h-full object-cover' />
                     </div>
-                    <div className='w-full p-6 bg-gray-200 h-full overflow-hidden flex items-center justify-center'>
-                         <div className='w-[320px] max-w-md bg-white p-8 rounded-2xl shadow-lg'>
-                                   <div className='w-full h-auto'>
-                                   <h1 className='text-center uppercase font-bold text-3xl tracking-widest mb-10'>
+                    <div className='w-full p-6 overflow-hidden'>
+                         <div className='w-full md:w-full h-auto  p-8 rounded-2xl'>
+                                   <div className='w-full h-auto md:flex md:flex-col md:items-center'>
+                                   <h1 className='text-center uppercase bg-gradient-to-r  from-[#0C291B] to-[#20664B] text-transparent bg-clip-text  font-bold text-3xl tracking-widest mb-10'>
                                         Login
                                    </h1>
-                                   <div className='w-full h-full mt-5 flex
+                                   <div className='w-full md:max-w-lg h-full mt-5 flex
                       flex-col gap-4'>
                                         <div className='flex flex-col gap-2'>
                                              <label htmlFor="email" className='font-bold text-lg tracking-wide'>
                                                   Email
                                              </label>
-                                             <input onChange={handleChange} type="text" id="email" name="email" className='border-2 px-3 py-2 rounded-2xl' placeholder='Enter email' required value={formData.email} />
+                                             <input onChange={handleChange} type="text" id="email" name="email" className='border-2 px-3 py-2 transition-all duration-200 ease-linear rounded-lg focus:border-[#639883] focus:outline-[#639883]' placeholder='Enter email' required value={formData.email} />
                                         </div>
                                         <div className='flex flex-col gap-2'>
                                              <label htmlFor="password" className='font-bold text-lg tracking-wide'>
                                                   Password
                                              </label>
-                                             <input onChange={handleChange} type="password" id="password" name='password' className='border-2 px-3 py-2 rounded-2xl' placeholder='Enter password' required value={formData.password} />
+                                             <input onChange={handleChange} type="password" id="password" name='password' className='border-2 px-3 py-2 transition-all duration-200 ease-linear focus:border-[#639883] focus:outline-[#639883] rounded-lg' placeholder='Enter password' required value={formData.password} />
                                         </div>
                                         <Link to="/auth/forgot-password" className='text-right text-sm -mt-2 font-semibold text-[#1E8DEF]'>Forgot password?</Link>
-                                        <button type='button' onClick={handleSubmit} className='relative cursor-pointer bg-black text-white py-2 rounded-2xl disabled:bg-[#333]' disabled={isLoading ? true : false}>
+                                        <button type='button' onClick={handleSubmit} className='relative cursor-pointer bg-gradient-to-r from-[#0C291B] to-[#20664B]  text-white py-2 rounded-lg disabled:bg-[#333]' disabled={isLoading ? true : false}>
                                              <span className='text-lg'>Login</span>
                                              {isLoading && <ClipLoader color='white' className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' />}
                                         </button>

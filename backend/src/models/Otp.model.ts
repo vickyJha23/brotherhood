@@ -9,7 +9,8 @@ const otpSchema = new Schema<IOtp>({
       },
       otp: {
            type: String,
-           required: true
+           required: true,
+           maxlength: 6
       },
       attempts: {
           type: Number,

@@ -54,8 +54,8 @@ const ForgotPassword = () => {
         return (
             <section className='h-screen w-full'>
                 <div className='w-full flex items-center justify-start h-full'>
-                    <div className='flex-[40%] h-full bg-gray-300 flex items-center justify-center'>
-                        <div className='w-[320px] max-w-80 bg-white rounded-2xl flex flex-col gap-4 px-4 py-8'>
+                    <div className='flex-1/2 h-full flex items-center justify-center'>
+                        <div className='w-full lg:max-w-lg bg-white rounded-2xl flex flex-col gap-4 px-4 py-8'>
                             <h2 className='font-bold text-2xl tracking-wide'>Forgot password?</h2>
                             <p className='text-base text-gray-500'>No worries, we'll send you reset instructions</p>
                             <div className='flex flex-col gap-4'>
@@ -73,8 +73,8 @@ const ForgotPassword = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='hidden md:block flex-[60%] h-full p-2'>
-                        <img src="https://m.media-amazon.com/images/I/81STsuNzgEL._AC_UY1100_.jpg" alt="" className='w-full h-full object-cover rounded-2xl' />
+                    <div className='hidden md:block flex-1/2 h-full p-2'>
+                        <img src="https://m.media-amazon.com/images/I/81STsuNzgEL._AC_UY1100_.jpg" alt="" className='w-full h-full object-cover' />
                     </div>
 
                 </div>

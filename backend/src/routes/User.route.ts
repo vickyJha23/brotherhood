@@ -1,6 +1,6 @@
 import { registerValidator, loginValidator, updateProfileValidator, updatePasswordValidator, sendOtpValidator, verifyOtpValidator, changePasswordValidator } from '../validators';
-import AuthController from '../controllers/Auth.controller';
-import { AuthService, OtpService, TokenService, MailService } from '../services';
+import AuthController from '../controllers/AuthUser.controller';
+import { AuthService, TokenService, MailService } from '../services';
 import UserDto from '../Dtos/User.dto';
 import { Router, Request, Response, NextFunction } from 'express';
 import { User, Otp } from '../models';
@@ -10,13 +10,12 @@ import { AuthenticatedRequest } from '../types/type';
 const userRouter = Router();
 
 // dependencies setup
-const authService = new AuthService(User);
+const authService = new AuthService(User, Otp);
 const tokenService = new TokenService();
 const userDto = new UserDto();
-const otpService = new OtpService(Otp);
 const mailService = new MailService()
 
-const authController = new AuthController(authService, tokenService, userDto, otpService, mailService);
+const authController = new AuthController(authService, tokenService, userDto, mailService);
 
 userRouter.post(
   '/register',
