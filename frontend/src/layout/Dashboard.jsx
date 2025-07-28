@@ -10,10 +10,10 @@ const Dashboard = () => {
      
 
   return (
-    <section className='h-screen'>
+    <section className='h-auto bg-white'>
         <Sidebar/>        
         <Header />
-        <div>
+        <div className='main'>
             <Outlet /> 
         </div>
         <Footer /> 
