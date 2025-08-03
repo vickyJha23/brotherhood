@@ -14,6 +14,7 @@ import ResetPassword from "./pages/ResetPassword";
 import AdminLayout from "./layout/AdminLayout";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
+import Product from "./pages/Product";
 
 const router = createBrowserRouter([
      {
@@ -26,6 +27,9 @@ const router = createBrowserRouter([
         }, {
              path: "/product-category/t-shirts/view-all",
              element: <Products /> 
+        }, {
+              path: "/shop",
+              element: <Product />
         }] 
      },
      {

@@ -13,7 +13,7 @@ const Subscription = () => {
                             You may unsubscribe at any moment. For that purpose,please find our contact info in the legal notice.
                         </p>
                     </div>
-                    <div className='flex-[0_0_60%] flex flex-col gap-2 mt-2'>
+                    <div className='flex-1 flex flex-col gap-2 mt-2'>
                         <div className='flex '>
                             <input type="text" placeholder='Your email address' className='outline-none w-full border-2 px-4 border-[#ccc] border-r-0 py-3' />
                             <button className='bg-black text-white px-4 py-2 uppercase hover:bg-gray-800 transition duration-300'>

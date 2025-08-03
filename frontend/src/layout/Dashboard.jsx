@@ -13,7 +13,7 @@ const Dashboard = () => {
     <section className='h-auto bg-white'>
         <Sidebar/>        
         <Header />
-        <div className='main'>
+        <div className='main h-auto'>
             <Outlet /> 
         </div>
         <Footer /> 

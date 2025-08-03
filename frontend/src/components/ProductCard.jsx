@@ -9,9 +9,9 @@ import NewArrivalTag from './NewArrivalTag'
 
 const ProductCard = ({ image, isRated = false, isNewArrival, height="h-64"}) => {
     return (
-        <div className='bg-white'>
-            <div className={`bg-white rounded-[5px] relative ${height}`}>
-                <img src={image} alt="" className='w-full h-full object-cover' />
+        <div className='bg-white rounded-[5px] overflow-hidden'>
+            <div className={`bg-white  relative ${height} unr overflow-hidden`}>
+                <img src={image} alt="" className='w-full h-full object-cover rounded-[5px]' />
                 {isRated && <Rating />}
                 <Favourite />
                 {isNewArrival && <NewArrivalTag />}

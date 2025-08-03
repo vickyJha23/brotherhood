@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useCallback} from 'react';
 import { useMediaQuery } from 'react-responsive'
 import { ChevronsUp, Star } from 'lucide-react';
-import gsap from 'gsap';
-
-import { useGSAP } from '@gsap/react';
 
 
 
@@ -17,13 +14,17 @@ import FilterPanel from '../components/FilterPanel';
 
 
 
-
 const Products = () => {
     const [scrollToTop, setScrollToTop] = useState(false);
     const [modal, setModal] = useState("");
     const isTablet = useMediaQuery({
-          query: "(min-width: 768px)"
-    });
+         query: "(max-width: 1024px)"
+    });  
+
+   const isDesktop = useMediaQuery({
+        query: "(min-width: 1024px)"
+   })
+
 
      
 
@@ -57,33 +58,33 @@ const Products = () => {
 
 
     return (
-        <section className='w-full min-h-screen'>
-            <div className='grid grid-cols-1 md:grid-cols-[auto_1fr]'>
-                <div className='max-w-[300px] w-[300px] hidden md:block border-[0.5px] border-[#ccc] border-t-0'>
+        <section className='w-full'>
+            <div className='grid grid-cols-1 md:grid-cols-[auto_1fr] border-b-[2px] border-b-[#ccc]'>
+                <div className='max-w-[300px] w-[300px] h-screen hidden md:block'>
                     <FilterPanel />
                 </div>
-                <div className='w-full px-5'>
+                <div className='w-full px-5 h-screen border-l-[0.5px] border-l-[#ccc] overflow-y-auto scrollbar-none'>
                     <Hero />
                     <Breadcrumps />
-                    <div className=''>
+                    <div className='border-b-0'>
                         <p className='text-base tracking-wider text-gray-500 px-4.5 pb-2.5 font-bold'>View All</p>
-                        <div className='grid grid-cols-2 md:grid-cols-3 gap-[1px] md:gap-1'>
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/6/1/61287521.jpg?aio=w-256"} isRated={true} isNewArrival={false} height={isTablet && "h-40"}  />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet && "h-40"} />
-                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet && "h-40"} />
+                        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 gap-[1px] md:gap-1'>
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/6/1/61287521.jpg?aio=w-256"} isRated={true} isNewArrival={false} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"}  />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={true} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
+                            <ProductCard image={"https://media.powerlook.in/catalog/product/1/3/1351620_5__1.jpg?aio=w-640"} isNewArrival={false} height={isTablet ? "h-40": isDesktop ? "h-80": "h-64"} />
                         </div>
 
                     </div>

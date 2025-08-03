@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 
-const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = null, display="block", opacity=1, bottomNav=false, boxShadow="none", marginTop="mt-2"}) => {
+const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = null, display="block", opacity=1, bottomNav=false, boxShadow="none", marginTop="mt-[0.6px]"}) => {
     const filterRef = useRef(null);
 
 
@@ -79,8 +79,8 @@ const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = nul
     return (
         <div ref={filterRef} className={`${postiion}
          top-0 left-0 h-full w-full bg-white z-50 ${display} ${marginTop}`}>
-            <div className='w-full h-screen overflow-y-auto'>
-                <div className={`px-4 py-4 flex items-center justify-between border-b-[1px] border-b-[#ccc]`} style={{
+            <div className='w-full h-screen overflow-y-auto scrollbar-none'>
+                <div className={`px-4 py-4 flex items-center justify-between border-b-[#ccc] border-b-[1px]`} style={{
                      boxShadow: boxShadow
                 }}>
                     <h3 className='text-lg font-medium tracking-wider text-gray-700'>
@@ -94,11 +94,11 @@ const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = nul
                         Reset
                     </button>
                 </div>
-                <div className='mt-8 w-full !overflow-auto px-4'>
+                <div className='mt-8 w-full overflow-auto'>
                     <form className='flex flex-col'>
 
                         {/* color filter */}
-                        <div className='border-b-[1px] border-b-[#ccc] pb-5'>
+                        <div className='border-b-[1px] border-b-[#ccc] pb-5 px-4'>
                             <h4 className='uppercase text-sm font-medium tracking-wider text-gray-700 mb-2'>
                                 Color
                             </h4>
@@ -127,7 +127,7 @@ const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = nul
                         {/* end of color filter  */}
 
                         {/* price filter */}
-                        <div className='py-3 border-b-[1px] border-[#ccc] pb-5'>
+                        <div className='py-3 border-b-[1px] border-b-[#ccc] pb-5 px-4'>
                             <h4 className='py-3 uppercase text-sm font-medium tracking-wider text-gray-700 mb-2'>
                                 Price
                             </h4>
@@ -155,7 +155,7 @@ const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = nul
                         {/* end of price filter */}
 
                         {/* size    */}
-                        <div className='py-3 border-b-[1px] border-[#ccc] pb-15'>
+                        <div className='py-3 pb-15 px-4'>
                             <h4 className='py-3 uppercase text-sm font-medium tracking-wider text-gray-700 mb-2'>
                                 Size
                             </h4>
