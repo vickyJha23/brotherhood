@@ -2,6 +2,7 @@ import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useMediaQuery } from "react-responsive";
 import { useActiveImage } from "../components/EmblaActiveCarousel";
+import { BadgePercent } from 'lucide-react';
 
 
 import NewArrivalTag from "./NewArrivalTag";
@@ -11,7 +12,6 @@ const ProductDetailsCarousel = ({ isNewArrival }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const { slideIndex, scrollSnaps, buttonClickHandler } =
     useActiveImage(emblaApi);
-  console.log(scrollSnaps);
 
   const isTablet = useMediaQuery({
     query: "(min-width: 768px)",
@@ -70,8 +70,7 @@ const ProductDetailsCarousel = ({ isNewArrival }) => {
       ) : (
         <div></div>
       )}
-
-      <NewArrivalTag size="12px" width="100px" />      
+      {isNewArrival && <NewArrivalTag size="11px" width="125px" />}      
     </div>
     
   );
