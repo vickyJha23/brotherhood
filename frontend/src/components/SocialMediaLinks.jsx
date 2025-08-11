@@ -8,8 +8,8 @@ import PaymentMethods from './PaymentMethods';
 
 const SocialMediaLinks = () => {
     return (
-        <div className='border-t-[1.5px] border-b-[1.5px] border-[#ccc] px-3'>
-            <div className='w-full'>
+        <div className='border-t-[1.5px] border-b-[1.5px] border-[#ccc]'>
+            <div className='container mx-auto w-full'>
                 <div className='flex py-4 flex-col xl:flex-row xl:justify-between gap-4 justify-center items-center'>
                     <PaymentMethods />
                     <div className='flex-1 flex flex-col xl:flex-row xl:gap-4 justify-end items-center gap-3'>

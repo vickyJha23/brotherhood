@@ -6,13 +6,12 @@ import { Link } from 'react-router-dom';
 
 const ProductExtraInfo = () => {
     const [openSection, setOpenSection] = useState(null);
-    console.log(openSection);
-
+    const [productQuantity, setProductQuantity] = useState(1);
 
     const handleToggle = useCallback((key) => {
-        console.log(key);
         setOpenSection(openSection === key ? null: key);
     }, [openSection])
+
 
 
   return (
@@ -25,10 +24,10 @@ const ProductExtraInfo = () => {
         <div className='flex
           flex-col gap-2 border-1 border-[#ccc] rounded-[5px] h-full p-[19px_21px_22px_23px]'>
            <div className='border-b-1 border-[#ccc] py-3'>
-              <div className='flex justify-between items-center'>
-               <div onClick={() => {
+              <div onClick={() => {
                   handleToggle("specs")
-               }} className='flex flex-col gap-1 cursor-pointer'>
+               }} className='flex justify-between items-center'>
+               <div className='flex flex-col gap-1 cursor-pointer'>
                   <h4 className='font-medium'> 
                     Specifications
                   </h4>
@@ -37,7 +36,7 @@ const ProductExtraInfo = () => {
                <span>
                   {openSection === "specs"? <Minus size={20} /> : <Plus size={20} />}
                </span>
-           </div>
+              </div>
            <div className={`mt-2 ${openSection === "specs" ? "":"hidden"}`}>
                <ul className='grid grid-cols-2 gap-x-10 gap-y-2'>
                    <li className='flex flex-col border-b-1 border-b-[#ccc] py-2'>
@@ -93,10 +92,10 @@ const ProductExtraInfo = () => {
 
           {/* start of description  */}
           <div className='border-b-1 border-[#ccc] py-3'>
-              <div className='flex justify-between items-center'>
               <div onClick={() => {
                   handleToggle("desc")
-              }} className='flex flex-col gap-1 cursor-pointer'>
+              }} className='flex justify-between items-center'>
+              <div className='flex flex-col gap-1 cursor-pointer'>
                  <h4 className='font-medium'>Description</h4>
                 <p className='text-xs font-medium'>
                    Product overview
@@ -115,10 +114,10 @@ const ProductExtraInfo = () => {
           {/* end of description  */}
 
           <div className='border-b-1 border-[#ccc] py-3'>
-             <div className='flex items-center justify-between'>
-                 <div onClick={() => {
+             <div onClick={() => {
                      handleToggle("return")
-                 }} className='flex flex-col gap-1 cursor-pointer'>
+                 }} className='flex items-center justify-between'>
+                 <div className='flex flex-col gap-1 cursor-pointer'>
                      <h4 className='font-medium'>
                          Return & refund policy
                      </h4>
@@ -145,10 +144,10 @@ const ProductExtraInfo = () => {
          {/* Manufactured By */}
 
           <div className='border-b-1 border-[#ccc] py-3'>
-              <div className='flex justify-between items-center'>
-                 <div onClick={() => {
+              <div onClick={() => {
                     handleToggle("manufacture")
-                 }} className='flex flex-col gap-1 cursor-pointer'>
+                 }} className='flex justify-between items-center'>
+                 <div className='flex flex-col gap-1 cursor-pointer'>
                      <h4 className='font-medium'>
                       Manufactured By
                     </h4>

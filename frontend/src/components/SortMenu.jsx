@@ -41,9 +41,6 @@ useGSAP(() => {
     }} className=' bg-white fixed w-full left-0 z-50 -bottom-full hidden items-center justify-center shadow-[0_0_3px_0_#ccc] pt-4 pb-2 px-3'>
                  <div className='w-full h-full'>
                      <h3 className='text-lg tracking-wider font-normal mb-2'>
-                        Sort By {
-                             console.log("fdjkfdjfkdfjl")
-                        }
                      </h3>
                      <ul className='flex flex-col'>
                          <li className='border-b-[1px] border-b-[#ccc] py-4 text-gray-700'>

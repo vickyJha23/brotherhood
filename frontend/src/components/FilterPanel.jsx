@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 
-const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = null, display="block", opacity=1, bottomNav=false, boxShadow="none", marginTop="mt-[0.6px]"}) => {
+const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = null, display="block", opacity=1, bottomNav=false, boxShadow="none", marginTop="mt-[1px]"}) => {
     const filterRef = useRef(null);
 
 
@@ -78,7 +78,7 @@ const FilterPanel = ({postiion = "static", modal = null, handleFilterModal = nul
 
     return (
         <div ref={filterRef} className={`${postiion}
-         top-0 left-0 h-full w-full bg-white z-50 ${display} ${marginTop}`}>
+         top-0 left-0 z-50  bg-white ${display} ${marginTop}`}>
             <div className='w-full h-screen overflow-y-auto scrollbar-none'>
                 <div className={`px-4 py-4 flex items-center justify-between border-b-[#ccc] border-b-[1px]`} style={{
                      boxShadow: boxShadow

@@ -9,7 +9,7 @@ import FooterCopyRight from './FooterCopyRight'
 
 const Footer = () => {
   return (
-    <div className='text-white my-15 mb-0 border-t-2 border-[#ccc]'>
+    <div className='text-white border-t-2 border-[#ccc] pb-15 md:pb-0'>
           <div className='px-3'>
             <TrustBanner />  
             <Subscription />

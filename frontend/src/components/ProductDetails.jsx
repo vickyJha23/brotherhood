@@ -11,10 +11,11 @@ import ProductDetailsCarousel from './ProductDetailsCarousel';
 
 const ProductDetails = () => {
   return (
-    <div className='grid grid-cols-1 border-b border-[#ccc] pb-8'>
+    <div className='md:container md:mx-auto grid justify-center grid-cols-1 md:grid-cols-2 border-b border-[#ccc] pb-8'>
             <ProductDetailsCarousel isNewArrival={true} />
             {/* this is about price and other things related container  */}
-            <div className='px-5 py-2'>
+            <div className=''>
+                 <div className='px-5 py-2'>
               <div className='flex flex-col gap-2'>
                 <h2 className='font-medium'>
                   Dark  Sky Contrast Polo t shirt
@@ -102,7 +103,8 @@ const ProductDetails = () => {
                         </button>
                      </div>
                 </div>
-             </div>            
+             </div>
+            </div>            
             
     </div>
   )

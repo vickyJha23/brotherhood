@@ -11,8 +11,8 @@ const Navbar = ({isSticky, onClickHandler}) => {
   const isLoggedIn = useSidebarStore((state) => state.isLoggedIn);
 
   return (
-    <nav className={`bg-white shadow flex w-full items-center px-4 py-3 lg:px-4 ${isSticky ? "fixed top-0 z-40": ""}` }>
-      <div className='container mx-auto flex justify-between items-center w-full'>
+    <nav className={`bg-white shadow w-full px-4 py-3 lg:px-4 ${isSticky ? "fixed top-0 z-40": ""}` }>
+      <div className='container mx-auto flex justify-between items-center'>
         <button onClick={showSidebar} type='button' className='space-y-2 cursor-pointer lg:hidden'>
           <AlignRight size={40} className='rotate-180' />
         </button>

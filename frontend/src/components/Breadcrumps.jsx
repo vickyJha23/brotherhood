@@ -27,7 +27,7 @@ const Breadcrumps = () => {
                 if(index !== breadcrumps.length - 1) {
                     return (
                         <Link to={bread === "/product-category" ? "/":bread === "/product-category/t-shirts" ? "/product-category/t-shirts/view-all" : bread} key={bread} className='flex items-center'>
-                              <span className='flex items-center'>
+                              <span className='flex items-center text-base'>
                                  {breadcrumpData[bread] || bread}
                                  <ChevronRight className='mx-1' size={12} />
                               </span>
@@ -35,7 +35,7 @@ const Breadcrumps = () => {
                     )
                 }
                 return (
-                    <span key={bread} className='text-gray-500'>
+                    <span key={bread} className='text-gray-500 text-base'>
                         {breadcrumpData[bread] || bread}
                     </span>
                 )
